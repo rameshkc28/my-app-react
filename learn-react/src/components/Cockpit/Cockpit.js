@@ -1,11 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const cockpit = props => {
+	const toggleBtnRef = useRef(null);
+
 	useEffect(() => {
 		console.log('Cockpit js useEffect');
-		setTimeout(() => {
-			alert('Cock Pit updated');
-		}, 1000);
+		// setTimeout(() => {
+		// 	alert('Cock Pit updated');
+		// }, 1000);
+		toggleBtnRef.current.click();
 		return () => {
 			console.log('Cockpit js clean up work');
 		};
@@ -20,7 +23,7 @@ const cockpit = props => {
   return (
 		<div>
 			<h1> Hi, I'm a {props.title}!!</h1>
-    	<button onClick={props.clicked}>Toggle Persons</button>
+    	<button onClick={props.clicked} ref={toggleBtnRef} >Toggle Persons</button>
 		</div>
 	);
 }
